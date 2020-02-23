@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400&family=Bowlby+One&display=swap');
+
+:root {
+    --white: #FFFFFF;
+    --orange: #7F52FF;
+    --black: #414141;
+    --blue: #3e53a6;
+}
+
+html {
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--black);
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    padding: 22rem 0 3rem;
+}
+
+main {
+    flex: 1;
+}
+
+section {
+    padding: 2rem 0;
+}
+
+footer {
+    padding: 2rem 0;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.callout {
+    line-height: 2;
+    font-size: 1.75rem;
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.container {
+    padding: 0 3rem;
+    margin: 0 auto;
+    max-width: 65rem;
+}
+
+a, a:visited, a:link {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 4rem;
+    font-family: 'Bowlby One', sans-serif;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+h4 {
+    font-size: .8rem;
+}
+
+p {
+    line-height: 1.4;
+    font-size: 1.25rem;
+}
+
+p:not(:last-child), ul:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+ul li, ol li {
+    list-style: outside;
+    margin-top: .7rem;
+    line-height: 1.3;
+    margin-left: 2rem;
+}
+
+ul li {
+    list-style: disc;
+}
+
+ol li {
+    list-style: decimal;
+}
+
+ul {
+    line-height: 1.4;
+}
+
+.branded {
+    font-family: 'Bowlby One', sans-serif;
+    font-weight: 700;
+}
