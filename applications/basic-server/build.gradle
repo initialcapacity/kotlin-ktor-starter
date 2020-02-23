@@ -5,6 +5,7 @@ apply plugin: 'application'
 mainClassName = "io.collective.start.AppKt"
 
 dependencies {
+    compile "io.ktor:ktor-freemarker:$ktor_version"
 }
 
 jar {

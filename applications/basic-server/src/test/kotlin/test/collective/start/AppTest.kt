@@ -16,7 +16,7 @@ class AppTest {
     fun testEmptyHome() = testApp {
         handleRequest(HttpMethod.Get, "/").apply {
             assertEquals(200, response.status()?.value)
-            assertTrue(response.content!!.contains("hi!"))
+            assertTrue(response.content!!.contains("example application"))
         }
     }
 
