@@ -1,0 +1,18 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+
+mainClassName = "io.collective.start.collector.AppKt"
+
+dependencies {
+    compile project(":components:data-collector")
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "io.collective.start.collector.AppKt"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

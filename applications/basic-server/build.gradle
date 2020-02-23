@@ -1,0 +1,17 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+
+mainClassName = "io.collective.start.AppKt"
+
+dependencies {
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "io.collective.start.AppKt"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

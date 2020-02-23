@@ -1,0 +1,9 @@
+rootProject.name = "collective"
+
+include "applications:basic-server"
+include "applications:data-analyzer-server"
+include "applications:data-collector-server"
+
+include "components:data-collector"
+include "components:data-analyzer"
+include "components:workflow-support"
