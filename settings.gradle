@@ -1,4 +1,4 @@
-rootProject.name = "collective"
+rootProject.name = "kotlin-ktor-starter"
 
 include "applications:basic-server"
 include "applications:data-analyzer-server"
