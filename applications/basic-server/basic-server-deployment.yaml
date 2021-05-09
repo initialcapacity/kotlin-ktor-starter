@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: basic-server
-          image: gcr.io/kotlin-ktor-starter/kotlin-ktor-starter:tag1
+          image: gcr.io/${PROJECT_NAME}/kotlin-ktor-starter:tag1
+          imagePullPolicy: Always
           resources:
             requests:
               cpu: 100m
