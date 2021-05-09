@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: basic-server
+  annotations:
+    beta.cloud.google.com/backend-config: '{"default": "config-default"}'
   labels:
     app: basic-server
     tier: frontend
