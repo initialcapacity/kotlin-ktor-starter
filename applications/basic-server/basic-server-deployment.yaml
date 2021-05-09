@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-server
+spec:
+  selector:
+    matchLabels:
+      app: basic-server
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: basic-server
+        tier: frontend
+    spec:
+      containers:
+        - name: basic-server
+          image: gcr.io/kotlin-ktor-starter/kotlin-ktor-starter:tag1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          env:
+            - name: PORT
+              value: '8888'
+          ports:
+            - containerPort: 8888

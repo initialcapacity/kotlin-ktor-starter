@@ -30,3 +30,25 @@ Run servers locally using the below example -
 ```bash
 java -jar applications/basic-server/build/libs/basic-server-1.0-SNAPSHOT.jar
 ```
+
+## Production
+
+Installing the pack CLI
+
+```bash
+brew install buildpacks/tap/pack
+```
+
+Building with pack
+
+```bash
+pack build kotlin-ktor-starter --builder heroku/buildpacks:20
+```
+
+Installing the google cloud sdk
+
+```bash
+brew install --cask google-cloud-sdk
+```
+
+Kubernetes deployment and service files located in `applications/basic-server`.

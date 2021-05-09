@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: basic-server
+  labels:
+    app: basic-server
+    tier: frontend
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8888
+  selector:
+    app: basic-server
+    tier: frontend
