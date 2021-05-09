@@ -4,7 +4,7 @@
     <section>
         <div class="container">
             <p>
-                An example application using Kotlin and Ktor.
+                Authenticated users with special access.
             </p>
         </div>
     </section>

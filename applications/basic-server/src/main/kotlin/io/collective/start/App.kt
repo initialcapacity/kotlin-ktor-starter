@@ -25,8 +25,13 @@ fun Application.module() {
     }
     install(Routing) {
         get("/") {
-
             call.respond(FreeMarkerContent("index.ftl", emptyMap<Any, Any>()))
+        }
+        get("/authenticated") {
+            call.respond(FreeMarkerContent("authenticated.ftl", emptyMap<Any, Any>()))
+        }
+        get("/authorized") {
+            call.respond(FreeMarkerContent("authorized.ftl", emptyMap<Any, Any>()))
         }
         static("images") { resources("images") }
         static("style") { resources("style") }

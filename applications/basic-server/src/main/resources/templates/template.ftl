@@ -18,6 +18,11 @@
             <p>
                 Basic application with background workers using Kotlin and Ktor
             </p>
+            <p>
+                <a href="/">home</a>
+                <a href="/authenticated">authenticated</a>
+                <a href="/authorized">authorized</a>
+            </p>
         </div>
     </header>
 
