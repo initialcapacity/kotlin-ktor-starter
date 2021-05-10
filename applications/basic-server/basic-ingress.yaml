@@ -2,6 +2,10 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: basic-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "basic-server-static-ip"
+    networking.gke.io/managed-certificates: "basic-certificate"
+    kubernetes.io/ingress.class: "gce"
 spec:
   backend:
     serviceName: basic-server
