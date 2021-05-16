@@ -25,5 +25,9 @@ spec:
           env:
             - name: PORT
               value: '8888'
+            - name: JWT_ISSUER
+              value: 'https://cloud.google.com/iap'
+            - name: JWT_AUDIENCE
+              value: '/projects/${PROJECT_NUMBER}/global/backendServices/${BACKEND_SERVICE_ID}'
           ports:
             - containerPort: 8888
