@@ -1,20 +1,15 @@
 package io.collective.start
 
 import freemarker.cache.ClassTemplateLoader
-import io.ktor.application.Application
-import io.ktor.application.call
-import io.ktor.application.install
-import io.ktor.features.CallLogging
-import io.ktor.features.DefaultHeaders
-import io.ktor.freemarker.FreeMarker
-import io.ktor.freemarker.FreeMarkerContent
-import io.ktor.http.content.resources
-import io.ktor.http.content.static
-import io.ktor.response.respond
-import io.ktor.routing.Routing
-import io.ktor.routing.get
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.jetty.Jetty
+import io.ktor.application.*
+import io.ktor.features.*
+import io.ktor.freemarker.*
+import io.ktor.http.content.*
+import io.ktor.response.*
+import io.ktor.routing.*
+import io.ktor.server.engine.*
+import io.ktor.server.jetty.*
+import io.ktor.util.pipeline.*
 import java.util.*
 
 fun Application.module() {
@@ -25,17 +20,25 @@ fun Application.module() {
     }
     install(Routing) {
         get("/") {
-            call.respond(FreeMarkerContent("index.ftl", emptyMap<Any, Any>()))
+            call.respond(FreeMarkerContent("index.ftl", mapOf("headers" to headers())))
         }
         get("/authenticated") {
-            call.respond(FreeMarkerContent("authenticated.ftl", emptyMap<Any, Any>()))
+            call.respond(FreeMarkerContent("authenticated.ftl", mapOf("headers" to headers())))
         }
         get("/authorized") {
-            call.respond(FreeMarkerContent("authorized.ftl", emptyMap<Any, Any>()))
+            call.respond(FreeMarkerContent("authorized.ftl", mapOf("headers" to headers())))
         }
         static("images") { resources("images") }
         static("style") { resources("style") }
     }
+}
+
+private fun PipelineContext<Unit, ApplicationCall>.headers(): MutableMap<String, String> {
+    val headers = mutableMapOf<String, String>()
+    call.request.headers.entries().forEach { entry ->
+        headers.put(entry.key, entry.value.joinToString())
+    }
+    return headers
 }
 
 fun main(args: Array<String>) {

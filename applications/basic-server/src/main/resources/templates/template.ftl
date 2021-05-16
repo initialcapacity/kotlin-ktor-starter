@@ -28,6 +28,19 @@
 
     <#nested />
 
+    <section>
+        <div class="container">
+            <p>Request headers</p>
+            <pre>
+                <code>
+                    <#list headers as key, value>
+${key}: ${value}
+                    </#list>
+                </code>
+            </pre>
+        </div>
+    </section>
+
     </body>
     </html>
 </#macro>
