@@ -1,6 +1,5 @@
 package io.collective.start
 
-import com.google.api.client.json.webtoken.JsonWebSignature
 import com.google.auth.oauth2.TokenVerifier
 import io.ktor.application.*
 import io.ktor.freemarker.*
@@ -14,21 +13,19 @@ fun Route.authenticated(verifier: TokenVerifier, callback: Route.() -> Unit): Ro
     })
     routeWithAuthentication.intercept(ApplicationCallPipeline.Features) {
         val assertion = call.request.headers.get("X-Goog-IAP-JWT-Assertion")
-        var exception = "Sorry, your email account is not authorized. "
-        var token:JsonWebSignature? = null
-        try {
-            token = verifier.verify(assertion)
-        } catch (e: Exception) {
-            exception += e.localizedMessage
+
+        if (assertion == null) {
+            val message = "Sorry, your email account is not authorized. missing json assertion"
+            call.respond(FreeMarkerContent("index.ftl", mapOf("message" to message)))
+            finish()
+            return@intercept
         }
 
-        if (assertion == null || token == null) {
-            call.respond(
-                FreeMarkerContent(
-                    "index.ftl",
-                    mapOf("message" to exception)
-                )
-            )
+        try {
+            verifier.verify(assertion)
+        } catch (e: Exception) {
+            val message = "Sorry, your email account is not authorized."
+            call.respond(FreeMarkerContent("index.ftl", mapOf("message" to "$message ${e.message}")))
             finish()
         }
     }

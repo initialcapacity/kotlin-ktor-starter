@@ -33,6 +33,15 @@ class AppTest {
     }
 
     @Test
+    fun testAuthnMissingAssertion() = testApp {
+        handleRequest(HttpMethod.Get, "/authenticated").apply {
+            assertEquals(200, response.status()?.value)
+            println(response.content!!)
+            assertTrue(response.content!!.contains("Sorry, your email account is not authorized. missing json assertion"))
+        }
+    }
+
+    @Test
     fun testAuthnException() = exceptionApp {
         handleRequest(HttpMethod.Get, "/authenticated") {
             addHeader("X-Goog-IAP-JWT-Assertion", "aToken")
