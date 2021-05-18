@@ -15,6 +15,11 @@ The example depends on the below technologies -
 * Testing tools [JUnit](https://junit.org/)
 * Production [Heroku](https://www.heroku.com)
 
+(May-2021) We've been using the kotlin-ktor-starter to explore identity-aware proxies and kubernetes -
+and have included a few kubernetes yaml files that describe ingress, service, and backend
+objects. We're also using [buildpacks](https://buildpacks.io/docs/tools/pack/cli/pack_build/) to
+build and then run the application on our kubernetes cluster.
+
 ## Configuration
 
 ### Server
@@ -39,7 +44,7 @@ Installing the [pack](https://buildpacks.io/docs/tools/pack/) CLI
 brew install buildpacks/tap/pack
 ```
 
-Build an application using [buildpacks](https://buildpacks.io/docs/tools/pack/cli/pack_build/)
+Build the application using pack.
 
 ```bash
 pack build kotlin-ktor-starter --builder heroku/buildpacks:20
