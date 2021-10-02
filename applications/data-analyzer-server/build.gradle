@@ -5,14 +5,20 @@ apply plugin: 'application'
 mainClassName = "io.collective.start.analyzer.AppKt"
 
 dependencies {
-    compile project(":components:data-analyzer")
+    implementation project(":components:data-analyzer")
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 jar {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
     manifest {
         attributes "Main-Class": "io.collective.start.analyzer.AppKt"
     }
     from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }

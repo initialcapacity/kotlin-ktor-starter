@@ -1,5 +1,5 @@
 version '1.0-SNAPSHOT'
 
 dependencies {
-    compile project(":components:workflow-support")
+    api project(":components:workflow-support")
 }
