@@ -27,7 +27,7 @@ fun Application.module() {
     scheduler.start()
 }
 
-fun main(args: Array<String>) {
+fun main() {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
     val port = System.getenv("PORT")?.toInt() ?: 8080
     embeddedServer(Jetty, port, watchPaths = listOf("data-collector-server"), module = Application::module).start()

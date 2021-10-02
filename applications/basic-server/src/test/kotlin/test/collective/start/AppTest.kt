@@ -7,9 +7,9 @@ import io.ktor.http.*
 import io.ktor.server.testing.*
 import io.mockk.every
 import io.mockk.mockk
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 
 class AppTest {
@@ -36,7 +36,6 @@ class AppTest {
     fun testAuthnMissingAssertion() = testApp {
         handleRequest(HttpMethod.Get, "/authenticated").apply {
             assertEquals(200, response.status()?.value)
-            println(response.content!!)
             assertTrue(response.content!!.contains("Sorry, your email account is not authorized. missing json assertion"))
         }
     }
@@ -47,7 +46,6 @@ class AppTest {
             addHeader("X-Goog-IAP-JWT-Assertion", "aToken")
         }.apply {
             assertEquals(200, response.status()?.value)
-            println(response.content!!)
             assertTrue(response.content!!.contains("Sorry, your email account is not authorized. ouch!"))
         }
     }

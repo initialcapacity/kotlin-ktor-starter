@@ -54,7 +54,7 @@ private fun PipelineContext<Unit, ApplicationCall>.headers(): MutableMap<String,
     return headers
 }
 
-fun main(args: Array<String>) {
+fun main() {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
     val port = System.getenv("PORT")?.toInt() ?: 8080
     embeddedServer(Jetty, port, watchPaths = listOf("basic-server"), module = Application::module).start()

@@ -7,7 +7,7 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 fun Route.authenticated(verifier: TokenVerifier, callback: Route.() -> Unit): Route {
-    val routeWithAuthentication = this.createChild(object : RouteSelector(1.0) {
+    val routeWithAuthentication = this.createChild(object : RouteSelector() {
         override fun evaluate(context: RoutingResolveContext, segmentIndex: Int): RouteSelectorEvaluation =
             RouteSelectorEvaluation.Constant
     })
