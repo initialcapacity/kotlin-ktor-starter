@@ -6,7 +6,9 @@ import java.util.concurrent.ConcurrentHashMap
 
 
 class BasicJSONLoggerFactory : ILoggerFactory {
-    private var loggerMap = ConcurrentHashMap<String, Logger>();
+    companion object {
+        private var loggerMap = ConcurrentHashMap<String, Logger>();
+    }
 
     override fun getLogger(name: String): Logger {
         return loggerMap.computeIfAbsent(name) {
