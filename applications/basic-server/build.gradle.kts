@@ -8,6 +8,7 @@ val ktorVersion: String by project
 
 dependencies {
     implementation(project(":components:data-analyzer"))
+    implementation(project(":support:logging-support"))
     implementation(project(":support:workflow-support"))
 
     implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")

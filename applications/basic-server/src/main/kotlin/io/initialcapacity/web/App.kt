@@ -14,9 +14,14 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.Routing
 import io.ktor.server.routing.get
 import io.ktor.util.pipeline.PipelineContext
+import org.slf4j.LoggerFactory
 import java.util.*
 
+private val logger = LoggerFactory.getLogger(object {}.javaClass.enclosingClass)
+
 fun Application.module() {
+    logger.info("starting the app")
+
     install(FreeMarker) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }

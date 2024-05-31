@@ -8,5 +8,6 @@ include(
     "components:data-collector",
     "components:data-analyzer",
 
+    "support:logging-support",
     "support:workflow-support"
 )

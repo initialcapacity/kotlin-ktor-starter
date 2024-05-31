@@ -7,6 +7,8 @@ group = "io.initialcapacity.analyzer"
 val ktorVersion: String by project
 
 dependencies {
+    implementation("org.slf4j:slf4j-simple:2.0.7")
+
     implementation(project(":components:data-analyzer"))
     implementation(project(":support:workflow-support"))
 
